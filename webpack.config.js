@@ -92,17 +92,13 @@ module.exports = {
           filename: '[name].css',
           chunkFilename: '[id].css',
         }),
+       
+        // new webpack.optimize.UglifyJsPlugin(),
+        new webpack.LoaderOptionsPlugin({
+            minimize: inProduction
+        })
+        
 
      
     ],
 };
-
-
-if(inProduction){
-    module.exports.plugins.push(
-       // new webpack.optimize.UglifyJsPlugin(),
-        new webpack.LoaderOptionsPlugin({
-            minimize: true
-        })
-    );
-}
