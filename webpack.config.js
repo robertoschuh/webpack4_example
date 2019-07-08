@@ -5,7 +5,6 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const inProduction = (process.env.NODE_ENV === 'production')
 
-console.log(__dirname);
 module.exports = {
     optimization: {
         minimizer: [
@@ -22,7 +21,8 @@ module.exports = {
             })
         ]
     },
-    entry: './src/main.js',
+    // This line is not necessary at all.
+   // entry: './src/main.js',   
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: 'bundle.js'
