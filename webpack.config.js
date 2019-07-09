@@ -1,21 +1,22 @@
 const webpack = require('webpack');
 const path = require('path');
-const argv = require('yargs').argv
+const argv = require('yargs').argv;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-const inProduction = (argv.mode === 'production')
-
-console.log('inProduction', inProduction);
+const inProduction = (argv.mode === 'production');
 
 module.exports = {
        
+    
+   // This line is not necessary at all.
     entry: {
         app: './src/main.js'  
     }, 
 
     output: {
         path: path.resolve(__dirname, './dist'),
+       // filename: '[name].[hash].js',
         filename: inProduction ? '[name].[hash].jss' : '[name].jss',
         chunkFilename: inProduction ? '[id].[hash].jss' : '[id].jss'
     }, 
@@ -50,7 +51,6 @@ module.exports = {
                             // by default it uses publicPath in webpackOptions.output
                             publicPath: './',
                             hmr: process.env.NODE_ENV ===  inProduction
-                         //   minimize: inProduction
                         //  reloadAll: true
 
                         },
