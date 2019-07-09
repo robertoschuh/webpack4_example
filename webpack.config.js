@@ -3,6 +3,7 @@ const path = require('path');
 const argv = require('yargs').argv;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const inProduction = (argv.mode === 'production');
 
@@ -73,6 +74,12 @@ module.exports = {
           // both options are optional
           filename: inProduction ? '[name].[hash].css' : '[name].css',
           chunkFilename: inProduction ? '[id].[hash].css' : '[id].css'
+        }),
+        
+        // Adding html for testing.
+        new HtmlWebpackPlugin({  // Also generate a test.html
+            filename: inProduction ? 'index.[hash].html' : 'index.html',
+            template: 'src/views/index.html'
         })    
     ]
 };
