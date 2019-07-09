@@ -3,8 +3,8 @@ require('./main.css');
 
 let car = 'adasd';
 
-const casa = () => {
-    console.log('pepe');
+const home = () => {
+    console.log('pepes home');
 }
 
 import notification from './Notification';

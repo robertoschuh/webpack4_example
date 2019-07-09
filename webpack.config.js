@@ -6,6 +6,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const PurgecssPlugin = require('purgecss-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 
 const inProduction = (argv.mode === 'production');
 
@@ -74,6 +76,12 @@ module.exports = {
         ]
     },
     plugins: [
+
+        // Clean previous file versions inside src folder.
+        new CleanWebpackPlugin({
+            verbose: true,
+        }),
+        
         new MiniCssExtractPlugin({
 
           // Options similar to the same options in webpackOptions.output
@@ -91,6 +99,7 @@ module.exports = {
         new PurgecssPlugin({
             paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true })
 
-        })
+        })      
+
     ]
 };
