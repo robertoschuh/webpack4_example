@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack src/main.js dist/bundle.js",
-    "prod": "NODE_ENV=production webpack",
+    "dev": "webpack --mode development",
+    "prod": "webpack --mode production",
     "watch": "webpack src/main.js dist/bundle.js --watch"
   },
   "keywords": [],
@@ -25,7 +25,8 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.13.2",
     "webpack": "^4.27.1",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "yargs": "^13.2.4"
   },
   "dependencies": {
     "uglifyjs-webpack-plugin": "^2.1.3"
