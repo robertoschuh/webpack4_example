@@ -24,8 +24,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, './dist'),
        // filename: '[name].[hash].js',
-        filename: inProduction ? '[name].[hash].jss' : '[name].jss',
-        chunkFilename: inProduction ? '[id].[hash].jss' : '[id].jss'
+        filename: inProduction ? '[name].[chunkhash].jss' : '[name].jss',
+        chunkFilename: inProduction ? '[id].[chunkhash].jss' : '[id].jss'
     }, 
     optimization: {
         minimize: inProduction,
@@ -78,13 +78,13 @@ module.exports = {
 
           // Options similar to the same options in webpackOptions.output
           // both options are optional
-          filename: inProduction ? '[name].[hash].css' : '[name].css',
-          chunkFilename: inProduction ? '[id].[hash].css' : '[id].css'
+          filename: inProduction ? '[name].[chunkhash].css' : '[name].css',
+          chunkFilename: inProduction ? '[id].[chunkhash].css' : '[id].css'
         }),
         
         // Adding html for testing.
         new HtmlWebpackPlugin({  // Also generate a test.html
-            filename: inProduction ? 'index.[hash].html' : 'index.html',
+            filename: inProduction ? 'index.[chunkhash].html' : 'index.html',
             template: 'src/views/index.html'
         }),
 
