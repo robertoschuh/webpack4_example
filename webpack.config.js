@@ -1,11 +1,17 @@
 const webpack = require('webpack');
 const path = require('path');
+const glob = require('glob')
 const argv = require('yargs').argv;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const PurgecssPlugin = require('purgecss-webpack-plugin')
 
 const inProduction = (argv.mode === 'production');
+
+const PATHS = {
+    src: path.join(__dirname, 'src')
+};
 
 module.exports = {
        
@@ -80,6 +86,11 @@ module.exports = {
         new HtmlWebpackPlugin({  // Also generate a test.html
             filename: inProduction ? 'index.[hash].html' : 'index.html',
             template: 'src/views/index.html'
-        })    
+        }),
+
+        new PurgecssPlugin({
+            paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true })
+
+        })
     ]
 };
